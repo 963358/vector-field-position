@@ -12,6 +12,7 @@ Demonstrates plotting directional arrows at points on a 3D meshgrid.
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 def init_point(x,y,z):
     ax.scatter(x,y,z, c="red", s=100)
 
@@ -59,15 +60,15 @@ def create_vectors():
     v[:,-1] = 0
     w[:,-1] = 0
 
-    u[0,0,0], v[0,0,0], w[0,0,0], v[3,0,0], w[3,0,0], u[-3,-3,0], w[-3,-3,0], u[0,0,3], v[0,0,3], u[-3,3,3], v[3,0,3], w[3,0,3] = 1
+    n=6
 
-    u[3,3,3], v[3,3,3], w[3,3,3], u[3,0,0], v[-3,-3,0], w[0,0,3], v[-3,3,3], w[-3,3,3], u[3,0,3] = -1
+    u[n-n,n-n,n-n] = v[n-n,n-n,n-n] = w[n-n,n-n,n-n] = v[n,n-n,n-n] = w[n,n-n,n-n] = u[n-n,n-n,n] = v[n-n,n-n,n] = u[n-n,n,n] = u[n,n-n,n] = v[n,n-n,n] = w[n,n,n-n] = u[n-n,n,n-n] = w[n-n,n,n-n] = 1
 
+    u[n,n,n] = v[n,n,n] = w[n,n,n] = u[n,n-n,n-n] = w[n-n,n-n,n] = v[n-n,n,n] = w[n-n,n,n] = w[n,n-n,n] = u[n,n,n-n] = v[n,n,n-n] = v[n-n,n,n-n] = -1
 
-
+    print(u[-3,-3,-3], v[-3,-3,-3], w[-3,-3,-3])
 
     return u, v, w
-
 
 ax = plt.figure().add_subplot(projection='3d')
 
