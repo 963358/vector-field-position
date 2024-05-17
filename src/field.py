@@ -11,7 +11,6 @@ def init_particle():
     x,y,z = np.random.uniform(-3.0,3.0, size=3)
     return x,y,z, u,v,w
 
-
 def create_field():
     
     u, v, w = (np.random.uniform(-1.0, 1.0, size=(7,7,7)),
@@ -79,26 +78,29 @@ field_u, field_v, field_w = create_field()
 # check subplot numbering (221 = 2x2, 1st subplot): https://stackoverflow.com/questions/3584805/what-does-the-argument-mean-in-fig-add-subplot111
 
 t = 0
-interval = 1
+interval = 2
+offset = 3
 x,y,z u,v,w = init_particle()
 
 for subplot in range(0,4):
     # first graph is t = 0
     ax = plt.figure().add_subplot(221+subplot, projection='3d')
-    
-    dx,dy,dz = init_velocity[x,y,z]
+    ax.title.set_text('t='+t)
+
+    dx = field_x[round(x)+offset, round(y)+offset, round(z)+offset]
+    dy = field_y[round(x)+offset, round(y)+offset, round(z)+offset]
+    dz = field_z[round(x)+offset, round(y)+offset, round(z)+offset]
 
     ax.quiver(x,y,z, dx,dy,dz, c="green", length=0.5, normalize=True) 
     ax.scatter(x,y,z, c="red", s=100)
     
     # euler's method
-    x += dx
-    y += dy
-    z += dz
+    x += dx*interval
+    y += dy*interval
+    z += dz*interval
     
     ax.quiver(field_x,field_y,field_z, field_u,field_v,field_w, length=0.5, normalize=True)
-
+    
     t += interval
-
 
 plt.show()
