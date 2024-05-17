@@ -4,14 +4,19 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def init_particle(): 
+    u,v,w = np.random.uniform(-1.0,1.0, size=3)
+    x,y,z = np.random.uniform(-3.0,3.0, size=3)
+    print("initial u,v,w: ", u,v,w, "initial x,y,z: ", x,y,z)
+    return x,y,z, u,v,w
 
-def init_point(x,y,z):
+
+def create_point(x,y,z):
     ax.scatter(x,y,z, c="red", s=100)
 
-def init_velocity(u,v,w):
-    
-
-def create_vectors():
+def create_velocity(u,v,w):
+    return
+def create_field():
     
     u, v, w = (np.random.uniform(-1.0, 1.0, size=(7,7,7)),
                 np.random.uniform(-1.0, 1.0, size=(7,7,7)),
@@ -67,19 +72,15 @@ def create_vectors():
 ax = plt.figure().add_subplot(projection='3d')
 
 # Make the grid (position)
-x, y, z = np.meshgrid(np.arange(-3, 4, 1),
+field_x, field_y, field_z = np.meshgrid(np.arange(-3, 4, 1),
                      np.arange(-3, 4, 1),
                      np.arange(-3, 4, 1)
                      )
                      
 
-u, v, w = create_vectors()
+field_u, field_v, field_w = create_field()
 
 
-# x, y, z
-init_point(np.random.uniform(-3,3), np.random.uniform(-3,3), np.random.uniform(-3,3))
-
-
-ax.quiver(x, y, z, u, v, w, length=0.5, normalize=True)
+ax.quiver(field_x, field_y, field_z, field_u, field_v, field_w, length=0.5, normalize=True)
 
 plt.show()
