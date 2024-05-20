@@ -119,12 +119,13 @@ def vectorField():
         print("u: ", round(u,3), "v: ", round(v,3), "w: ", round(w,3))
 
         points.append([x,y,z])
+        
+        print("x: ", round(x,3), "y: ", round(y,3), "z: ", round(z,3))
+        
         # adding position to vector (r_0 + v)
         x += u
         y += v
         z += w
-
-        print("x: ", round(x,3), "y: ", round(y,3), "z: ", round(z,3))
         
         ax.quiver(field_x,field_y,field_z, field_u,field_v,field_w, length=0.5, normalize=True)
         
