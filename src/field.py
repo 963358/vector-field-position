@@ -107,16 +107,16 @@ def vectorField():
 
         
         # adding vectors, method (r + v*t)
-        u += dx
-        v += dy
-        w += dz
+        u += dx*interval
+        v += dy*interval
+        w += dz*interval
         
         ax.quiver(x,y,z, u,v,w, color="r", length=2, normalize=True) 
         ax.scatter(x,y,z, color="r", s=100)
         
         print("t = ", t)
-        print("velocity: ", np.sqrt(pow(u*interval,2) + pow(v*interval,2) + pow(w*interval,2)))
-        print("u: ", round(u*interval,3), "v: ", round(v*interval,3), "w: ", round(w*interval,3))
+        print("velocity: ", np.sqrt(pow(u,2) + pow(v,2) + pow(w,2)))
+        print("u: ", round(u,3), "v: ", round(v,3), "w: ", round(w,3))
 
         points.append([x,y,z])
         
