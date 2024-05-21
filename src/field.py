@@ -101,9 +101,9 @@ def vectorField():
         ax.set_ylabel('y')
         ax.set_zlabel('z')
 
-        dx = field_x[round(x), round(y), round(z)]
-        dy = field_y[round(x), round(y), round(z)]
-        dz = field_z[round(x), round(y), round(z)]
+        dx = field_x[int(x), int(y), int(z)]
+        dy = field_y[int(x), int(y), int(z)]
+        dz = field_z[int(x), int(y), int(z)]
 
         
         # adding vectors, method (r + v*t)
